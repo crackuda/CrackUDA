@@ -12,8 +12,8 @@ In Proceedings of the International Conference on Pattern Recognition (ICPR), 20
 ## Installation
 
 ```bash
-conda create -n cyws python=3.9
-conda activate cyws
+conda create -n crackuda python=3.9
+conda activate crackuda
 conda install -c pytorch pytorch=1.10.1 torchvision=0.11.2 cudatoolkit=11.3.1
 pip install matplotlib numpy tensorboardX opencv-python pillow
 ```
