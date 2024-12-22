@@ -1,6 +1,6 @@
 # CrackUDA: Incremental Unsupervised Domain Adaptation for Improved Crack Segmentation in Civil Structures.
 
-[[Project Page]](https://crackuda.github.io/) [[Paper]](https://crackuda.github.io/)
+[[Project Page]](https://crackuda.github.io/) [[Paper]](https://link.springer.com/chapter/10.1007/978-3-031-78113-1_6)
 
 In Proceedings of the International Conference on Pattern Recognition (ICPR), 2024. 
 
