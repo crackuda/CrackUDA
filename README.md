@@ -15,24 +15,32 @@ In Proceedings of the International Conference on Pattern Recognition (ICPR), 20
 conda create -n crackuda python=3.9
 conda activate crackuda
 conda install -c pytorch pytorch=1.10.1 torchvision=0.11.2 cudatoolkit=11.3.1
-pip install matplotlib numpy tensorboardX opencv-python pillow
+pip install matplotlib numpy==1.24 tensorboardX opencv-python pillow
 ```
 
 ## Datasets
 
 - [CrackSeg9k](https://github.com/Dhananjay42/crackseg9k) Used as the source dataset for conducting the experiments reported in the paper.
-- BuildCrack: Dataset introduced in this paper, used as target dataset along with sub-datasets of CrackSeg9k. 
+- [BuildCrack](https://zenodo.org/records/14544429): Dataset introduced in this paper, used as target dataset along with sub-datasets of CrackSeg9k. 
 
 The expected data sturcture for any dataset is as follows: 
 ```plaintext
    workspace/
    ├── source_dataset (CrackSeg9k) /
-   │   ├── images
-   |        | image1.jpg
-   |        | image2.jpg
-   │   ├── labels
-   |        | image1.png
-   |        | image2.png
+   |   ├──train 
+   │        ├── images
+   |            | image1.jpg
+   |            | image2.jpg
+   │        ├── labels
+   |            | image1.png
+   |            | image2.png
+   |   ├──val 
+   │        ├── images
+   |            | image1.jpg
+   |            | image2.jpg
+   │        ├── labels
+   |            | image1.png
+   |            | image2.png
    ├── target_dataset (BuildCrack) /
    │   ├── images
    |        | image1.jpg
@@ -55,7 +63,7 @@ CrackSeg9k contains several subdatasets such as `Mason, Ceramic, CFD, etc.`. `--
 For Step 2, we use the trained model from Step 1 to perform UDA using adversarial training through GRL. 
 
 ```bash
-python train_step2.py --save_dir <step2_save_path> --num_epochs 20 --target_dataset_path <target_dataset> --source_dataset_path <source_dataset> --dataset_avoided <sub_dataset_name> --dataset_avoided <sub_dataset_name> --saved_model <step1_save_path>/best_model.pth
+python train_step2.py --save_dir <step2_save_path> --num_epochs 20 --target_dataset_path <target_dataset> --source_dataset_path <source_dataset> --dataset_avoided <sub_dataset_name> --saved_model <step1_save_path>/best_model.pth
 ```
 
 Ensure that `--dataset-avoided` is set with the same value for both steps. 
@@ -93,7 +101,15 @@ python eval_step2.py --weight <step2_save_path>/best_model.pth --source_dataset_
 ## Citation
 If you find the code and dataset useful, please cite this paper (and refer the dataset as BuildCrack):
 ```
-@misc{
+@InProceedings{10.1007/978-3-031-78113-1_6,
+author="Srivastava, Kushagra and Kancharla, Damodar Datta and Tahereen, Rizvi and Ramancharla, Pradeep Kumar
+and Sarvadevabhatla, Ravi Kiran and Kandath, Harikumar",
+title="CrackUDA: Incremental Unsupervised Domain Adaptation for Improved Crack Segmentation in Civil Structures",
+booktitle="Pattern Recognition",
+year="2025",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="74--89",
 }
 ```
 
