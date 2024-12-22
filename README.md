@@ -67,9 +67,6 @@ python train_step2.py --save_dir <step2_save_path> --num_epochs 20 --target_data
 ```
 
 Ensure that `--dataset-avoided` is set with the same value for both steps. 
-## Pretrained Models
-
-Please find both Step 1 and Step 2 pretrained models [here](https://crackuda.github.io/).
 
 ## Inference
 
